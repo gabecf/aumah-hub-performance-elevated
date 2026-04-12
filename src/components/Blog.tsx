@@ -1,20 +1,29 @@
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 
+const author = {
+  name: "Gabriel Castro",
+  role: "Head de Performance",
+  avatar: "/gabriel-aumah.png",
+};
+
 const posts = [
   {
     tag: "Google Ads",
     title: "Performance Max em 2025: quando usar e quando evitar",
     date: "12 Mar 2025",
+    author,
   },
   {
     tag: "Estratégia",
     title: "ROAS vs. MER: qual métrica realmente importa para o seu e-commerce",
     date: "28 Fev 2025",
+    author,
   },
   {
     tag: "LinkedIn Ads",
     title: "Como reduzir CPL em LinkedIn sem sacrificar qualidade de lead",
     date: "15 Fev 2025",
+    author,
   },
 ];
 
@@ -25,6 +34,9 @@ export default function Blog() {
     <section ref={ref} id="blog" data-theme="light" className="bg-light py-28">
       <div className="mx-auto max-w-7xl px-6">
         <h2 className="reveal text-[clamp(32px,4vw,56px)] font-extrabold text-navy">Conteúdo</h2>
+        <p className="reveal mt-4 max-w-2xl text-lg text-navy/60">
+          Conteúdo direto ao ponto sobre performance, dados e estratégia de mídia paga. Sem enrolação.
+        </p>
 
         <div className="mt-16 grid gap-6 md:grid-cols-3">
           {posts.map((p, i) => (
@@ -39,10 +51,31 @@ export default function Blog() {
                 <h3 className="mt-4 text-lg font-bold leading-snug text-navy">{p.title}</h3>
                 <p className="mt-3 text-xs text-navy/50">{p.date}</p>
                 <span className="mt-5 inline-block text-sm font-semibold text-orange">Ler →</span>
+
+                <div className="mt-6 border-t border-navy/10 pt-5">
+                  <div className="flex items-center gap-3">
+                    <img
+                      src={p.author.avatar}
+                      alt={p.author.name}
+                      className="h-8 w-8 rounded-full object-cover"
+                    />
+                    <div>
+                      <p className="text-sm font-semibold text-navy">{p.author.name}</p>
+                      <p className="text-xs text-navy/50">{p.author.role}</p>
+                    </div>
+                  </div>
+                </div>
               </div>
             </article>
           ))}
         </div>
+
+        <a
+          href="#"
+          className="reveal mt-12 mx-auto flex w-fit rounded-full border-[0.5px] border-[#1b1464]/40 px-7 py-3.5 text-sm font-semibold text-[#1b1464] transition-colors hover:border-[#6400df] hover:text-[#6400df]"
+        >
+          Ver mais conteúdos →
+        </a>
       </div>
     </section>
   );

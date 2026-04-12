@@ -1,71 +1,188 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { FileText, MessageCircle, X } from "lucide-react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
+
+const contactOptions = [
+  {
+    label: "Diagnóstico gratuito",
+    desc: "Preencha e entraremos em contato",
+    icon: <FileText size={18} />,
+    action: "form" as const,
+  },
+  {
+    label: "WhatsApp",
+    desc: "Resposta rápida e direta",
+    icon: <MessageCircle size={18} />,
+    href: "https://wa.me/5500000000000",
+    external: true,
+  },
+];
+
+const inputClass =
+  "w-full rounded-lg border border-white/10 bg-white/[0.05] px-4 py-3.5 text-sm text-text-dark-bg placeholder:text-text-dark-bg/30 focus:border-purple focus:outline-none transition-colors";
 
 export default function Contact() {
   const ref = useScrollReveal<HTMLElement>();
-  const [form, setForm] = useState({ name: "", email: "", budget: "", message: "" });
+  const [showForm, setShowForm] = useState(false);
+  const [form, setForm] = useState({ name: "", email: "", budget: "" });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const inputClass =
-    "w-full rounded-lg border border-navy/40 bg-navy/20 px-4 py-3 text-sm text-text-dark-bg placeholder:text-text-dark-bg/40 focus:border-purple focus:outline-none transition-colors";
+  // Fechar com Esc
+  useEffect(() => {
+    const handleEsc = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setShowForm(false);
+    };
+    if (showForm) document.addEventListener("keydown", handleEsc);
+    return () => document.removeEventListener("keydown", handleEsc);
+  }, [showForm]);
+
+  // Bloquear scroll do body
+  useEffect(() => {
+    document.body.style.overflow = showForm ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [showForm]);
+
+  const sharedItemClass =
+    "flex w-full items-center justify-between border-b border-white/[0.08] px-0 py-5 transition-colors hover:bg-white/[0.03]";
 
   return (
     <section ref={ref} id="contato" data-theme="dark" className="bg-dark py-28">
-      <div className="mx-auto max-w-2xl px-6">
-        <h2 className="reveal text-center text-[clamp(28px,4vw,48px)] font-extrabold text-text-dark-bg">
-          Pronto para parar de desperdiçar budget?
+      <div className="mx-auto max-w-2xl px-4 sm:px-6">
+        <h2 className="reveal text-center text-[clamp(32px,5vw,56px)] font-extrabold text-text-dark-bg">
+          Vamos trabalhar juntos?
         </h2>
-        <p className="reveal mt-4 text-center text-lg text-text-dark-bg/60">
-          Diagnóstico gratuito. Sem compromisso.
+        <p className="reveal mt-3 text-center text-base text-text-dark-bg/50">
+          Escolha como prefere começar.
         </p>
 
-        <form className="reveal mt-14 flex flex-col gap-5" onSubmit={(e) => e.preventDefault()}>
-          <input
-            name="name"
-            placeholder="Nome"
-            value={form.name}
-            onChange={handleChange}
-            className={inputClass}
-          />
-          <input
-            name="email"
-            type="email"
-            placeholder="E-mail"
-            value={form.email}
-            onChange={handleChange}
-            className={inputClass}
-          />
-          <select
-            name="budget"
-            value={form.budget}
-            onChange={handleChange}
-            className={inputClass}
-          >
-            <option value="" disabled>Budget mensal de mídia</option>
-            <option value="3-10k">R$ 3k – R$ 10k</option>
-            <option value="10-25k">R$ 10k – R$ 25k</option>
-            <option value="25-50k">R$ 25k – R$ 50k</option>
-            <option value="50k+">Acima de R$ 50k</option>
-          </select>
-          <textarea
-            name="message"
-            placeholder="Conte sobre seu desafio atual"
-            rows={4}
-            value={form.message}
-            onChange={handleChange}
-            className={inputClass}
-          />
-          <button
-            type="submit"
-            className="mt-2 rounded-lg bg-orange px-8 py-4 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90"
-          >
-            Solicitar diagnóstico
-          </button>
-        </form>
+        <address className="reveal mt-10 not-italic">
+          {contactOptions.map((opt) => {
+            const inner = (
+              <>
+                <div>
+                  <p className="text-sm font-semibold text-text-dark-bg">
+                    {opt.label}
+                  </p>
+                  <p className="mt-0.5 text-sm text-text-dark-bg/40">
+                    {opt.desc}
+                  </p>
+                </div>
+                <span className="text-text-dark-bg/30">{opt.icon}</span>
+              </>
+            );
+
+            if (opt.action === "form") {
+              return (
+                <button
+                  key={opt.label}
+                  type="button"
+                  aria-label="Abrir formulário de diagnóstico gratuito"
+                  onClick={() => setShowForm(true)}
+                  className={sharedItemClass}
+                >
+                  {inner}
+                </button>
+              );
+            }
+
+            return (
+              <a
+                key={opt.label}
+                href={opt.href}
+                aria-label={`${opt.label}: ${opt.desc}`}
+                {...(opt.external
+                  ? { target: "_blank", rel: "noopener noreferrer" }
+                  : {})}
+                className={sharedItemClass}
+              >
+                {inner}
+              </a>
+            );
+          })}
+        </address>
       </div>
+
+      {/* Modal overlay */}
+      {showForm && (
+        <div
+          role="dialog"
+          aria-modal="true"
+          aria-label="Formulário de diagnóstico"
+          className="fixed inset-0 z-50 flex items-center justify-center p-4"
+        >
+          {/* Backdrop */}
+          <div
+            className="absolute inset-0 bg-black/70 backdrop-blur-sm"
+            onClick={() => setShowForm(false)}
+          />
+
+          {/* Card */}
+          <div className="relative z-10 mx-4 w-full max-w-lg rounded-2xl border border-white/10 bg-[#0a0a0f] p-5 shadow-2xl sm:mx-0 sm:p-8">
+            {/* Header */}
+            <div className="mb-6 flex items-center justify-between">
+              <span className="text-xs font-semibold uppercase tracking-widest text-text-dark-bg/40">
+                Diagnóstico gratuito
+              </span>
+              <button
+                onClick={() => setShowForm(false)}
+                aria-label="Fechar formulário"
+                className="p-1 text-text-dark-bg/40 transition-colors hover:text-text-dark-bg"
+              >
+                <X size={18} />
+              </button>
+            </div>
+
+            {/* Form */}
+            <form
+              className="flex flex-col gap-5"
+              onSubmit={(e) => e.preventDefault()}
+            >
+              <input
+                name="name"
+                placeholder="Nome"
+                value={form.name}
+                onChange={handleChange}
+                className={inputClass}
+              />
+              <input
+                name="email"
+                type="email"
+                placeholder="E-mail"
+                value={form.email}
+                onChange={handleChange}
+                className={inputClass}
+              />
+              <select
+                name="budget"
+                value={form.budget}
+                onChange={handleChange}
+                className={inputClass}
+              >
+                <option value="" disabled>
+                  Budget mensal de mídia
+                </option>
+                <option value="3-10k">R$ 3k – R$ 10k</option>
+                <option value="10-25k">R$ 10k – R$ 25k</option>
+                <option value="25-50k">R$ 25k – R$ 50k</option>
+                <option value="50k+">Acima de R$ 50k</option>
+              </select>
+              <button
+                type="submit"
+                className="mt-2 rounded-lg bg-orange px-8 py-4 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90"
+              >
+                Solicitar diagnóstico
+              </button>
+            </form>
+          </div>
+        </div>
+      )}
     </section>
   );
 }

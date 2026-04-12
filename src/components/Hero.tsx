@@ -1,9 +1,5 @@
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
-
-const clients = [
-  "TechStore", "MedGroup", "FashionBR", "SaaS Cloud", "IndústriaPro",
-  "ClínicaVida", "EduTech", "LogísticaMax",
-];
 
 export default function Hero() {
   const ref = useScrollReveal<HTMLElement>();
@@ -23,51 +19,76 @@ export default function Hero() {
         src="/icon-a.png"
         alt=""
         aria-hidden="true"
-        className="pointer-events-none absolute right-[5%] top-1/2 -translate-y-1/2 -rotate-[8deg] opacity-[0.07]"
-        style={{ width: 420, height: "auto" }}
+        className="pointer-events-none absolute z-0 right-[5%] top-1/2 -translate-y-1/2 -rotate-[8deg] opacity-[0.08]"
+        style={{ width: 480, height: "auto" }}
       />
 
-      <div className="relative z-10 mx-auto max-w-7xl px-6 pt-32 pb-20">
-        {/* Eyebrow */}
-        <span className="reveal mb-6 inline-block rounded-full bg-purple/[0.15] px-4 py-1.5 text-[13px] font-semibold tracking-wide text-purple">
-          Agência de Performance Digital
-        </span>
-
-        <h1 className="reveal max-w-3xl text-[clamp(36px,5vw,76px)] font-extrabold leading-[1.05] text-text-dark-bg">
+      <div className="relative z-10 mx-auto max-w-7xl px-6 pt-24 pb-20 lg:pt-28 lg:pb-32">
+        <h1 className="reveal max-w-5xl tracking-tight text-[clamp(36px,5.5vw,72px)] font-bold leading-[1.05] text-text-dark-bg">
           Seu budget de mídia trabalhando no limite.
         </h1>
 
-        <p className="reveal mt-6 max-w-xl text-lg leading-relaxed text-text-dark-bg/65">
-          Gerenciamos Google Ads, LinkedIn e Meta para empresas que medem resultado em receita — não em cliques.
-        </p>
+        <div className="reveal mt-8 grid grid-cols-1 items-end gap-8 lg:grid-cols-2">
 
-        <div className="reveal mt-10 flex flex-wrap gap-4">
-          <a
-            href="#servicos"
-            className="rounded-lg bg-orange px-7 py-3.5 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90"
-          >
-            Ver como funciona →
-          </a>
-          <a
-            href="#contato"
-            className="rounded-lg border border-purple px-7 py-3.5 text-sm font-semibold text-purple transition-colors hover:bg-purple/10"
-          >
-            Falar com especialista
-          </a>
-        </div>
-      </div>
-
-      {/* Ticker */}
-      <div className="relative z-10 border-t border-navy/30 pt-8 pb-8 overflow-hidden">
-        <div className="animate-marquee flex whitespace-nowrap">
-          {[...clients, ...clients].map((c, i) => (
-            <span
-              key={i}
-              className="mx-10 text-sm font-semibold uppercase tracking-widest text-text-dark-bg/30"
+          {/* Coluna esquerda: subtítulo + botão */}
+          <div>
+            <p className="max-w-sm text-base leading-relaxed text-text-dark-bg/55">
+              Gerenciamos Google Ads, LinkedIn e Meta para empresas que medem resultado em receita — não em cliques.
+            </p>
+            <a
+              href="#contato"
+              className="group mt-8 inline-flex w-fit items-center gap-3 text-sm font-medium text-text-dark-bg/80 transition-all duration-300 hover:text-text-dark-bg"
             >
-              {c}
-            </span>
-          ))}
+              <span className="relative overflow-hidden rounded-full border border-orange/60 px-5 py-2.5 transition-all duration-300 group-hover:border-orange group-hover:bg-orange/10">
+                Falar com um especialista
+              </span>
+              <span className="flex h-8 w-8 items-center justify-center rounded-full border border-white/20 transition-all duration-500 group-hover:translate-x-1 group-hover:border-orange group-hover:bg-orange/10">
+                <ArrowRight size={14} className="text-white/50 transition-colors group-hover:text-orange" />
+              </span>
+            </a>
+          </div>
+
+          {/* Coluna direita: serviços clicáveis — oculto no mobile */}
+          <div className="hidden lg:flex items-end justify-end relative z-10">
+            <div className="flex flex-row items-start gap-8">
+              <a
+                href="/midia-paga"
+                aria-label="Serviço de Mídia Paga"
+                className="group/pillar flex flex-col gap-0.5 transition-opacity hover:opacity-70"
+              >
+                <p className="flex items-center gap-1.5 text-sm font-semibold text-text-dark-bg">
+                  Mídia Paga
+                  <ArrowUpRight size={12} className="translate-x-0 -translate-y-0.5 opacity-0 transition-all group-hover/pillar:translate-y-0 group-hover/pillar:opacity-60" />
+                </p>
+                <p className="text-xs text-text-dark-bg/40">Google, Meta & LinkedIn Ads</p>
+              </a>
+              <div className="hidden lg:block w-px h-8 bg-white/10 self-center" />
+              <a
+                href="/sites"
+                aria-label="Serviço de criação de Sites"
+                className="group/pillar flex flex-col gap-0.5 transition-opacity hover:opacity-70"
+              >
+                <p className="flex items-center gap-1.5 text-sm font-semibold text-text-dark-bg">
+                  Sites
+                  <ArrowUpRight size={12} className="translate-x-0 -translate-y-0.5 opacity-0 transition-all group-hover/pillar:translate-y-0 group-hover/pillar:opacity-60" />
+                </p>
+                <p className="text-xs text-text-dark-bg/40">Landing pages & institucionais</p>
+              </a>
+              <div className="hidden lg:block w-px h-8 bg-white/10 self-center" />
+              <a
+                href="/automacao"
+                aria-label="Serviço de Automação"
+                className="group/pillar flex flex-col gap-0.5 transition-opacity hover:opacity-70"
+              >
+                <p className="flex items-center gap-1.5 text-sm font-semibold text-text-dark-bg">
+                  Automação
+                  <ArrowUpRight size={12} className="translate-x-0 -translate-y-0.5 opacity-0 transition-all group-hover/pillar:translate-y-0 group-hover/pillar:opacity-60" />
+                </p>
+                <p className="text-xs text-text-dark-bg/40">CRM, fluxos & integrações</p>
+              </a>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>

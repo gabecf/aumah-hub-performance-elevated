@@ -36,7 +36,7 @@ export default function Navbar() {
 
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-500 ${bg}`}>
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
+      <div className="relative mx-auto flex max-w-7xl items-center px-6 py-4">
         <a href="#" aria-label="Aumah Hub">
           <img
             src="/logo-horizontal.png"
@@ -47,20 +47,13 @@ export default function Navbar() {
         </a>
 
         {/* Desktop */}
-        <div className={`hidden items-center gap-8 lg:flex ${textColor}`}>
+        <div className={`absolute left-1/2 hidden -translate-x-1/2 items-center gap-8 lg:flex ${textColor}`}>
           {navLinks.map((l) => (
             <a key={l.href} href={l.href} className="nav-link text-sm font-semibold tracking-wide">
               {l.label}
             </a>
           ))}
         </div>
-
-        <a
-          href="#contato"
-          className="hidden rounded-lg bg-orange px-5 py-2.5 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90 lg:inline-block"
-        >
-          Diagnóstico gratuito
-        </a>
 
         {/* Mobile toggle */}
         <button
@@ -85,13 +78,6 @@ export default function Navbar() {
               {l.label}
             </a>
           ))}
-          <a
-            href="#contato"
-            className="inline-block rounded-lg bg-orange px-5 py-2.5 text-center text-sm font-semibold text-primary-foreground"
-            onClick={() => setMobileOpen(false)}
-          >
-            Diagnóstico gratuito
-          </a>
         </div>
       )}
     </nav>

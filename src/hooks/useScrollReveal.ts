@@ -17,7 +17,7 @@ export function useScrollReveal<T extends HTMLElement>() {
           }
         });
       },
-      { threshold: 0.15 }
+      { threshold: 0.1, rootMargin: "0px 0px -60px 0px" }
     );
 
     children.forEach((child, i) => {
