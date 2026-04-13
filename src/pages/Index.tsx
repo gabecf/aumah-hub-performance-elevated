@@ -15,7 +15,7 @@ const Index = () => {
       <Hero />
 
       <div
-        className="relative z-10 rounded-t-[20px] bg-[#f5f4f2] shadow-[0_-12px_40px_rgba(0,0,0,0.25)]"
+        className="relative z-10 -mt-6 overflow-hidden rounded-t-[24px] shadow-[0_-16px_48px_rgba(0,0,0,0.3)]"
       >
         <About />
         <Services />

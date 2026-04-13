@@ -32,7 +32,7 @@ export default function Blog() {
 
   return (
     <section ref={ref} id="blog" data-theme="light" className="bg-light py-28">
-      <div className="mx-auto max-w-7xl px-6">
+      <div className="mx-auto max-w-6xl px-6">
         <h2 className="reveal text-[clamp(32px,4vw,56px)] font-extrabold text-navy">Conteúdo</h2>
         <p className="reveal mt-4 max-w-2xl text-lg text-navy/60">
           Conteúdo direto ao ponto sobre performance, dados e estratégia de mídia paga. Sem enrolação.

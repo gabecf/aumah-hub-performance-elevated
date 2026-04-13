@@ -12,6 +12,7 @@ const navLinks = [
 export default function Navbar() {
   const [isDark, setIsDark] = useState(true);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     const sections = document.querySelectorAll("section[data-theme]");
@@ -29,13 +30,19 @@ export default function Navbar() {
     return () => observer.disconnect();
   }, []);
 
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 50);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   const bg = isDark
     ? "bg-[rgba(10,10,15,0.92)] backdrop-blur-[12px]"
     : "bg-[rgba(245,244,242,0.96)] backdrop-blur-[12px]";
   const textColor = isDark ? "text-text-dark-bg" : "text-navy";
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-500 ${bg}`}>
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${bg} ${scrolled ? (isDark ? "border-b border-white/[0.08]" : "border-b border-navy/[0.08]") : "border-b border-transparent"}`}>
       <div className="relative mx-auto flex max-w-7xl items-center px-6 py-4">
         <a href="#" aria-label="Aumah Hub">
           <img

@@ -51,7 +51,7 @@ export default function Testimonials() {
 
   return (
     <section ref={ref} data-theme="dark" className="bg-dark py-28">
-      <div className="mx-auto max-w-5xl px-6">
+      <div className="mx-auto max-w-6xl px-6">
         <h2 className="reveal text-[clamp(28px,3vw,44px)] font-extrabold text-text-dark-bg">
           O que nossos clientes dizem
         </h2>

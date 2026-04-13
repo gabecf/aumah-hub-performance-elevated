@@ -8,7 +8,7 @@ export default function Hero() {
     <section
       ref={ref}
       data-theme="dark"
-      className="relative flex min-h-screen flex-col justify-center overflow-hidden bg-dark"
+      className="sticky top-0 z-0 flex min-h-screen flex-col justify-center overflow-hidden bg-dark"
       style={{
         background:
           "radial-gradient(ellipse 60% 50% at 80% 20%, hsla(268,100%,44%,0.18), transparent), radial-gradient(ellipse 50% 40% at 20% 80%, hsla(14,88%,54%,0.10), transparent), hsl(240 30% 4%)",

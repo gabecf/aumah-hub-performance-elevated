@@ -13,7 +13,7 @@ const contactOptions = [
     label: "WhatsApp",
     desc: "Resposta rápida e direta",
     icon: <MessageCircle size={18} />,
-    href: "https://wa.me/5500000000000",
+    href: "https://wa.me/5519982391369",
     external: true,
   },
 ];
@@ -54,7 +54,7 @@ export default function Contact() {
 
   return (
     <section ref={ref} id="contato" data-theme="dark" className="bg-dark py-28">
-      <div className="mx-auto max-w-2xl px-4 sm:px-6">
+      <div className="mx-auto max-w-xl px-4 sm:px-6">
         <h2 className="reveal text-center text-[clamp(32px,5vw,56px)] font-extrabold text-text-dark-bg">
           Vamos trabalhar juntos?
         </h2>
@@ -63,49 +63,42 @@ export default function Contact() {
         </p>
 
         <address className="reveal mt-10 not-italic">
-          {contactOptions.map((opt) => {
-            const inner = (
-              <>
-                <div>
-                  <p className="text-sm font-semibold text-text-dark-bg">
-                    {opt.label}
-                  </p>
-                  <p className="mt-0.5 text-sm text-text-dark-bg/40">
-                    {opt.desc}
-                  </p>
-                </div>
-                <span className="text-text-dark-bg/30">{opt.icon}</span>
-              </>
-            );
+          <button
+            type="button"
+            onClick={() => setShowForm(true)}
+            className="w-full flex items-center justify-between py-5 border-b border-white/[0.08] hover:bg-white/[0.03] transition-colors text-left"
+          >
+            <div className="flex flex-col gap-0.5">
+              <span className="text-sm font-semibold text-text-dark-bg">
+                Diagnóstico gratuito
+              </span>
+              <span className="text-sm text-text-dark-bg/40">
+                Preencha e entraremos em contato
+              </span>
+            </div>
+            <div className="flex-shrink-0 pr-2 text-text-dark-bg/30">
+              <FileText size={18} />
+            </div>
+          </button>
 
-            if (opt.action === "form") {
-              return (
-                <button
-                  key={opt.label}
-                  type="button"
-                  aria-label="Abrir formulário de diagnóstico gratuito"
-                  onClick={() => setShowForm(true)}
-                  className={sharedItemClass}
-                >
-                  {inner}
-                </button>
-              );
-            }
-
-            return (
-              <a
-                key={opt.label}
-                href={opt.href}
-                aria-label={`${opt.label}: ${opt.desc}`}
-                {...(opt.external
-                  ? { target: "_blank", rel: "noopener noreferrer" }
-                  : {})}
-                className={sharedItemClass}
-              >
-                {inner}
-              </a>
-            );
-          })}
+          <a
+            href="https://wa.me/5519982391369"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-full flex items-center justify-between py-5 border-b border-white/[0.08] hover:bg-white/[0.03] transition-colors"
+          >
+            <div className="flex flex-col gap-0.5">
+              <span className="text-sm font-semibold text-text-dark-bg">
+                WhatsApp
+              </span>
+              <span className="text-sm text-text-dark-bg/40">
+                Resposta rápida e direta
+              </span>
+            </div>
+            <div className="flex-shrink-0 pr-2 text-text-dark-bg/30">
+              <MessageCircle size={18} />
+            </div>
+          </a>
         </address>
       </div>
 

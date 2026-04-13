@@ -82,6 +82,10 @@
   animation: marquee 30s linear infinite;
 }
 
+/* Scrollbar hide */
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+.scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+
 /* Nav link underline */
 .nav-link {
   position: relative;
