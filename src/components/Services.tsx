@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, ArrowUpRight } from "lucide-react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 const tools = [
@@ -82,16 +82,58 @@ export default function Services() {
           }}
         >
           <h2 className="text-[clamp(28px,3.5vw,48px)] font-semibold tracking-tight text-text-dark-bg">
-            Ferramentas que dominamos
+            O que fazemos
           </h2>
           <p className="mt-4 max-w-lg text-base text-text-dark-bg/50">
-            Do tráfego pago à automação — operamos o ecossistema completo de crescimento digital.
+            Estratégia, execução e tecnologia para crescimento digital mensurável.
           </p>
         </div>
 
+        {/* Cards de serviço */}
+        <div className="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-4">
+          {[
+            {
+              title: "Mídia Paga",
+              desc: "Google Ads, Meta Ads e LinkedIn Ads com foco em ROI mensurável.",
+              href: "/midia-paga",
+            },
+            {
+              title: "Sites",
+              desc: "Landing pages e sites institucionais focados em conversão.",
+              href: "/sites",
+            },
+            {
+              title: "Automação",
+              desc: "CRM, fluxos e integrações para escalar sem aumentar equipe.",
+              href: "/automacao",
+            },
+          ].map((s) => (
+            <a
+              key={s.href}
+              href={s.href}
+              className="group flex flex-col justify-between rounded-xl border border-white/10 bg-white/[0.04] p-6 transition-all duration-300 hover:border-purple/40 hover:bg-white/[0.07]"
+            >
+              <div>
+                <h3 className="text-base font-semibold text-text-dark-bg">{s.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-text-dark-bg/50">{s.desc}</p>
+              </div>
+              <div className="mt-6 flex items-center gap-1.5 text-xs font-medium text-purple/60 transition-colors group-hover:text-purple">
+                Saiba mais
+                <ArrowUpRight size={12} />
+              </div>
+            </a>
+          ))}
+        </div>
+
+        {/* Separador + carrossel */}
+        <div className="mt-16 border-t border-white/[0.08] pt-12">
+          <p className="text-xs font-semibold tracking-widest text-text-dark-bg/25 uppercase mb-10">
+            Ferramentas que utilizamos
+          </p>
+
         {/* Carrossel */}
         <div
-          className="relative mt-20 flex w-full items-center justify-center gap-4"
+          className="relative flex w-full items-center justify-center gap-4"
           onMouseEnter={() => setPaused(true)}
           onMouseLeave={() => setPaused(false)}
         >
@@ -178,6 +220,8 @@ export default function Services() {
           </button>
 
         </div>
+
+        </div>{/* fim separador */}
       </div>
     </section>
   );
