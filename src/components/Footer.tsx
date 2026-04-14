@@ -16,10 +16,9 @@ export default function Footer() {
         {/* Logo */}
         <div className="mb-10 flex justify-center">
           <img
-            src="/logo-horizontal.png"
-            alt="Aumah Hub"
-            className="h-7"
-            style={{ filter: "brightness(0) invert(1)" }}
+            src="/logo-horizontal-dark.png"
+            alt="Aumah Hub logo"
+            className="h-8"
           />
         </div>
 

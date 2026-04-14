@@ -12,7 +12,7 @@ export default {
     },
     extend: {
       fontFamily: {
-        body: ["'Plus Jakarta Sans'", "sans-serif"],
+        body: ["'Urbanist'", "sans-serif"],
       },
       colors: {
         navy: "hsl(var(--navy))",
