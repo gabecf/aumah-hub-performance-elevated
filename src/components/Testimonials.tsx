@@ -7,21 +7,21 @@ const testimonials = [
     name: "Mariana Costa",
     role: "Diretora de Marketing",
     company: "TechStore",
-    avatar: "/gabriel-aumah.png",
+    avatar: "/gabriel-aumah.webp",
   },
   {
     quote: "Em 3 meses, nosso custo por lead caiu 60% e a qualidade dos leads aumentou. A diferença de trabalhar com quem entende dados é brutal.",
     name: "Rafael Mendes",
     role: "CEO",
     company: "SaaS Cloud",
-    avatar: "/gabriel-aumah.png",
+    avatar: "/gabriel-aumah.webp",
   },
   {
     quote: "Contratamos a Aumah com ceticismo de quem já passou por 3 agências. Hoje, eles são parte estratégica do nosso crescimento.",
     name: "Juliana Ferreira",
     role: "Head de Growth",
     company: "FashionBR",
-    avatar: "/gabriel-aumah.png",
+    avatar: "/gabriel-aumah.webp",
   },
 ];
 

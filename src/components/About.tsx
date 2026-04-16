@@ -18,7 +18,7 @@ export default function About() {
           <div className="reveal order-2 lg:col-span-2 lg:order-1">
             <div className="relative aspect-[3/4] w-full overflow-hidden rounded-2xl">
               <img
-                src="/gabriel-aumah.png"
+                src="/gabriel-aumah.webp"
                 alt="Gabriel Castro — Fundador da Aumah Hub"
                 className="h-full w-full object-cover object-top"
                 loading="lazy"

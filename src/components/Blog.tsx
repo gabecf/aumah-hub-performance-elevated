@@ -4,7 +4,7 @@ import { useScrollReveal } from "@/hooks/useScrollReveal";
 const author = {
   name: "Gabriel Castro",
   role: "Head de Performance",
-  avatar: "/gabriel-aumah.png",
+  avatar: "/gabriel-aumah.webp",
 };
 
 const posts = [

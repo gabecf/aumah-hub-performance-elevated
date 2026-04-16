@@ -16,7 +16,7 @@ export default function Footer() {
         {/* Logo */}
         <div className="mb-10 flex justify-center">
           <img
-            src="/logo-horizontal-dark.png"
+            src="/logo-horizontal-dark.webp"
             alt="Aumah Hub logo"
             className="h-8"
           />

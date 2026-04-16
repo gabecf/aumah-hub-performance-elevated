@@ -16,7 +16,7 @@ export default function Hero() {
     >
       {/* Decorative icon */}
       <img
-        src="/icon-a.png"
+        src="/icon-a.webp"
         alt=""
         aria-hidden="true"
         className="pointer-events-none absolute z-0 right-[5%] top-1/2 -translate-y-1/2 -rotate-[8deg] opacity-[0.08]"

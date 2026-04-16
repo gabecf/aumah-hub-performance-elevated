@@ -21,7 +21,7 @@ export default function WhatsAppButton() {
       {/* Foto com indicador online */}
       <div className="relative">
         <img
-          src="/gabriel-aumah.png"
+          src="/gabriel-aumah.webp"
           alt="Gabriel Castro"
           className="h-14 w-14 rounded-full object-cover object-top ring-2 ring-white/20 shadow-lg"
         />

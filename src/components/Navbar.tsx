@@ -46,7 +46,7 @@ export default function Navbar() {
       <div className="relative mx-auto flex max-w-7xl items-center px-6 py-4">
         <a href="#" aria-label="Aumah Hub">
           <img
-            src={isDark ? "/logo-horizontal-dark.png" : "/logo-horizontal.png"}
+            src={isDark ? "/logo-horizontal-dark.webp" : "/logo-horizontal.webp"}
             alt="Aumah Hub logo"
             className="h-8"
           />
